@@ -3,6 +3,7 @@ from utils.get_random_symbols import randomString, randomNumbers
 
 
 def test_get_token_for_valid_user():
+    # A.Kugach: simple test to get user's token
     user_login = randomString(10)
     user_password = randomNumbers(10)
     post(
@@ -21,6 +22,7 @@ def test_get_token_for_valid_user():
     assert r['token'] != ''
 
 def test_get_token_for_invalid_user():
+    # A.Kugach: negative test to check 401 error if user's credentials are incorrect (password)
     user_login = randomString(10)
     user_password = randomNumbers(10)
     post(

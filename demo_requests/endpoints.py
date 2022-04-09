@@ -1,5 +1,4 @@
 import requests
-from utils.get_random_symbols import randomString, randomNumbers
 from config import ENV
 from os.path import join
 
@@ -11,3 +10,6 @@ def post(endpoint, **kwargs):
 def get(endpoint, **kwargs):
     return requests.get(join(ENV, endpoint), **kwargs)
 
+
+def put(endpoint, **kwargs):
+    return requests.put(join(ENV, endpoint), **kwargs)

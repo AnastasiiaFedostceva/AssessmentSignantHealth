@@ -3,6 +3,7 @@ from utils.get_random_symbols import randomString, randomNumbers
 
 
 def test_registration_200():
+    # A.Kugach: simple test to check user's registration
     status_code = post(
         endpoint='api/users',
         username=randomString(10),
@@ -15,6 +16,7 @@ def test_registration_200():
 
 
 def test_registration_for_duplicate_user():
+    # A.Kugach: test to check the unique key (username) for registration
     double_user = randomString(10)
     status_code = post(
         endpoint='api/users',
