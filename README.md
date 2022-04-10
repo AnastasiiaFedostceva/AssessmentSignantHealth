@@ -15,6 +15,7 @@ During this task some assumptions and limitations were made:
 4) the task may have imprecision in description:
    1) API method GET /api/users does not require TOKEN parameter. The tests (/tests/test_get_all_users.py) were designed according to this imprecision, so this parameter is not needed .
    2) some libraries in Flasky project are not described  in requirements.txt, so when installing Flasky you need to downgarde versions of some libraries.
+   
 
 
 ## Test Cases ##
@@ -41,6 +42,12 @@ Checklist for API tests. Basic assertions are presented in the table. Specific a
 This project contains 'requests' library, so we don't need to send header 'Content-Type': 'application/json'. 
 This project uses pytest to run the tests in structure.
 File config.py contains variable that describes the URL to test environment.
+### Logging and reporting ###
+Report is provided as html-file (by pytest-html). If you want to get run report, execute command
+```
+py.test --html=report.html -s --capture=tee-sys
+
+```
 
 # HOW-TO run the tests #
 ## Prerequisites ##
