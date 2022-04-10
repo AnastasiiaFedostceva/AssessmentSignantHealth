@@ -44,12 +44,21 @@ File config.py contains variable that describes the URL to test environment.
 
 # HOW-TO run the tests #
 To run the application you need Python 3.7 to be installed.
-1. Start demo Flasky project by instruction: https://github.com/SH-interview/Flasky/blob/master/README.md
-2. Download this project locally or pull in to your repository 
-3. Install the libraries by
+
+Start demo Flasky project by instruction: https://github.com/SH-interview/Flasky/blob/master/README.md
+
+Download this project in zip locally or pull in to your repository by
+
+```https://github.com/AnastasiiaFedostceva/AssessmentSignantHealth.git```
+
+
+Install the libraries by
 
 ``` pip install requirements.txt ```
 
 
-4. Run the tests from console: enter to folder with the project and type 'pytest' and print Enter
+Run the tests from console: enter to folder with the project and type
+
+```pytest```
+
 
