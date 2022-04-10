@@ -9,7 +9,7 @@ The project consists of:
 
 ## Assumptions and limitations ##
 During this task some assumptions and limitations were made:
-1) positive test cases will be run first, tests with zero (highest) priority were described to meet the acceptance criteria
+1) positive test cases will be run , tests with zero (highest) priority were described to meet the acceptance criteria. Parameterized tests (for test data) can be done with pytest.
 2) not all information about error codes and corner cases is available
 3) not all API methods are described in Assessment task. Test for DELETE method is presented and it checks that error code is 405. All other methods were not checked.
 4) the task may have imprecision in description:
