@@ -1,13 +1,13 @@
 # AssessmentSignantHealth #
 
-##Project Description##
+## Project Description ##
 This repository contains tests for Signant Health Assessment task.
 
 The project consists of:
 /tests module: files in this module describe test cases to meet the acceptance criteria
 /utils module: files in this module describe different helpers for API methods, API requests and utils for randomizing.
 
-##Assumptions and limitations##
+## Assumptions and limitations ##
 During this task some assumptions and limitations were made:
 1) positive test cases will be run first, tests with zero (highest) priority were described to meet the acceptance criteria
 2) not all information about error codes and corner situations is available
@@ -16,7 +16,7 @@ During this task some assumptions and limitations were made:
    2) some libraries in Flasky project are not described  in requirements.txt, so when installing Flasky you need to downgarde versions of some libraries.
 
 
-##Test Cases##
+## Test Cases ##
 Checklist for API tests. Basic assertions are presented in the table. Specific assertions are also made in tests
 
 | Function                   | Test Case                                                                                   | Priority |
@@ -35,12 +35,12 @@ Checklist for API tests. Basic assertions are presented in the table. Specific a
 | POST /api/users/{username} | Update user's profile with 'username', check error code = 403 (username cannot be updated)  | 0        |
 | POST /api/users/{username} | Update user's profile without sending TOKEN (without authorization), check error code = 401 | 0        |
  
-##Technical details##
+## Technical details ##
 This project contains 'requests' library, so we don't need to send header 'Content-Type': 'application/json'. 
 This project uses pytest to run the tests in structure.
 File config.py contains variable that describes the URL to test environment.
 
-#HOW-TO run the tests #
+# HOW-TO run the tests #
 1. Start demo Flasky project by instruction: https://github.com/SH-interview/Flasky/blob/master/README.md
 2. Download this project locally or pull in to your repository 
 3. Install the libraries from requirements.txt
