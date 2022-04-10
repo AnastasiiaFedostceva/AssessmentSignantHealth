@@ -43,22 +43,33 @@ This project uses pytest to run the tests in structure.
 File config.py contains variable that describes the URL to test environment.
 
 # HOW-TO run the tests #
-To run the application you need Python 3.7 to be installed.
+## Prerequisites ##
+To run the application you need Python 3.7 to be installed
 
-Start demo Flasky project by instruction: https://github.com/SH-interview/Flasky/blob/master/README.md
+# Build and run #
 
-Download this project in zip locally or pull in to your repository by
+Clone demo Flasky project according to the instruction: https://github.com/SH-interview/Flasky/blob/master/README.md
 
-```https://github.com/AnastasiiaFedostceva/AssessmentSignantHealth.git```
+```
+git clone https://github.com/SH-interview/Flasky.git
+```
 
+Download this project in zip locally or pull in to your repository 
 
-Install the libraries by
+```
+git clone https://github.com/AnastasiiaFedostceva/AssessmentSignantHealth.git
+```
 
-``` pip install requirements.txt ```
+Install the required libraries by running PIP
 
+``` 
+pip install requirements.txt 
+```
 
-Run the tests from console: enter to folder with the project and type
+Run the tests from console: from the project folder, run
 
-```pytest```
+```
+pytest
+```
 
 
