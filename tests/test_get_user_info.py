@@ -1,47 +1,25 @@
-from demo_requests.endpoints import post, get
+from utils.api_helper import register, get_token, get_user_info
 from utils.get_random_symbols import randomString, randomNumbers
 
 
 def test_get_user_info():
-    #A.Kugach: test to check user's info after registration
-    user_login = randomString(10)
-    user_password = randomNumbers(10)
-    post(
-        endpoint='api/users',
-        username=user_login,
-        password=user_password,
-        firstname=randomString(10),
-        lastname=randomString(10),
-        phone='+358{}'.format(randomNumbers(9)
-                              ))
-    user_token = get(endpoint='api/auth/token', auth=(user_login, user_password)).json()['token']
-
-    response = get(endpoint='api/users/{}'.format(user_login), headers={'Token': user_token})
-    r = response.json()
-    print(r)
-    assert r['status'] == 'SUCCESS'
-    assert r['message'] == 'retrieval succesful'
+    # A.Kugach: test to check user's info after registration
+    username = randomString(10)
+    password = randomNumbers(10)
+    register(username=username, password=password)
+    token = get_token(username=username, password=password).json()['token']
+    response = get_user_info(username=username, token=token)
+    assert response.json()['status'] == 'SUCCESS'
+    assert response.json()['message'] == 'retrieval succesful'
     assert response.status_code == 200
 
 
 def test_get_user_info_with_error():
-    #A.Kugach: negative test to check 401 error (trying to get user's info without token)
-    user_login = randomString(10)
-    user_password = randomNumbers(10)
-    post(
-        endpoint='api/users',
-        username=user_login,
-        password=user_password,
-        firstname=randomString(10),
-        lastname=randomString(10),
-        phone='+358{}'.format(randomNumbers(9)
-                              ))
-
-    response = get(endpoint='api/users/{}'.format(user_login))
-    r = response.json()
-    print(r)
-    print(response.status_code)
-    assert r['status'] == 'FAILURE'
-    assert r['message'] == 'Token authentication required'
+    # A.Kugach: negative test to check 401 error (trying to get user's info without token)
+    username = randomString(10)
+    password = randomNumbers(10)
+    register(username=username, password=password)
+    response = get_user_info(username=username, token=None)
+    assert response.json()['status'] == 'FAILURE'
+    assert response.json()['message'] == 'Token authentication required'
     assert response.status_code == 401
-
