@@ -11,7 +11,8 @@ The project consists of:
 During this task some assumptions and limitations were made:
 1) positive test cases will be run first, tests with zero (highest) priority were described to meet the acceptance criteria
 2) not all information about error codes and corner cases is available
-3) the task may have imprecision in description:
+3) not all API methods are described in Assessment task. Test for DELETE method is presented and it checks that error code is 405. All other methods were not checked.
+4) the task may have imprecision in description:
    1) API method GET /api/users does not require TOKEN parameter. The tests (/tests/test_get_all_users.py) were designed according to this imprecision, so this parameter is not needed .
    2) some libraries in Flasky project are not described  in requirements.txt, so when installing Flasky you need to downgarde versions of some libraries.
 
@@ -41,8 +42,9 @@ This project uses pytest to run the tests in structure.
 File config.py contains variable that describes the URL to test environment.
 
 # HOW-TO run the tests #
+To run the application you need Python 3.7 to be installed.
 1. Start demo Flasky project by instruction: https://github.com/SH-interview/Flasky/blob/master/README.md
 2. Download this project locally or pull in to your repository 
-3. Install the libraries from requirements.txt
-4. Run the tests from console: enter to folder with the project and type 'pytest' and print Enter
+3. Install the libraries by  ``` pip install requirements.txt ```
+5. Run the tests from console: enter to folder with the project and type 'pytest' and print Enter
 

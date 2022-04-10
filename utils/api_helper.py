@@ -1,4 +1,4 @@
-from utils.request_helper import post, get, put
+from utils.request_helper import post, get, put, delete
 from utils.get_random_symbols import randomNumbers, randomString
 
 
@@ -31,3 +31,7 @@ def get_user_info(username, token):
 
 def get_all_users():
     return get(endpoint='api/users')
+
+
+def delete_user(username):
+    return delete(endpoint=f'api/users/{username}')

@@ -13,3 +13,7 @@ def get(endpoint, **kwargs):
 
 def put(endpoint, headers=None, **kwargs):
     return requests.put(url=join(ENV, endpoint), headers=headers, json=kwargs)
+
+
+def delete(endpoint, **kwargs):
+    return requests.delete(url=join(ENV, endpoint), **kwargs)
