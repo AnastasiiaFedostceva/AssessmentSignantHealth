@@ -1,3 +1,8 @@
+#reports from Robot
+ui_tests/log.html
+ui_tests/report.html
+ui_tests/output.xml
+
 # idea project files
 .idea/
 
