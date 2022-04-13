@@ -84,14 +84,15 @@ To run the UI tests from console, you need to change the directory. From the pro
 ```
 cd ui_tests
 ```
+Remember the absolute path to the folder where you stored with application - {PATH_TO_THE_ROOT_FOLDER}
 
 To run test in Chrome, run
 ```
-robot --variable browser_name:Chrome tests.robot
+robot --variable browser_name:Chrome {PATH_TO_THE_ROOT_FOLDER}/AssessmentSignantHealth 
 ```
 To run test in Firefox, run
 ```
-robot --variable browser_name:Firefox tests.robot
+robot --variable browser_name:Firefox {PATH_TO_THE_ROOT_FOLDER}/AssessmentSignantHealth 
 ```
 
 ## Assumptions and limitations ##
