@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation       All page objects and keywords for Landing Page.
+Documentation       All page objects and keywords for User Info Page.
 Library             SeleniumLibrary
 Library             OperatingSystem
 Library             String
