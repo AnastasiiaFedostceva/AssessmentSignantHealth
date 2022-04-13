@@ -10,7 +10,6 @@ Library             String
 *** Variables ***
 ${url}                  http://0.0.0.0:8080/
 ${browser_name}         Firefox
-${path} =   /Users/anastasiiakugach/PycharmProjects
 
 
 *** Keywords ***
@@ -29,7 +28,7 @@ Set suite variables
 
 
 Open browser on page
-    Create Webdriver    ${browser_name}  executable_path=${path}/AssessmentSignantHealth/ui_tests/drivers/${browser_name}
+    Create Webdriver    ${browser_name}  executable_path=drivers/${browser_name}
     Go To               ${url}
 
 Close browser session
