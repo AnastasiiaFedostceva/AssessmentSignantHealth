@@ -99,13 +99,11 @@ Test Results could be found:
 The following assumptions and limitations were made:
 Common: not all possible test cases are presented in this project. Only positive test cases are presented to meet the acceptance criteria. Some negative test cases are also presented to show the experience.
 ### For API tests ###
-1) positive test cases will be run first to meet the acceptance criteria
-2) not all information about error codes and corner cases is available
-3) not all HTTP methods are described in Assessment task
-4) test for DELETE method is present, and it checks that the error code is 405. All other http-methods were not covered.
-5) the task may have imprecision in description:
-   1) API method GET /api/users does not require TOKEN parameter. The tests (/tests/test_get_all_users.py) were designed according to this imprecision, so this parameter is not needed .
-   2) some libraries in Flasky project are not described in requirements.txt, so when installing Flasky locally, you may need to downgrade versions of some libraries.
+1) Positive test cases will be run first to meet the acceptance criteria.
+2) Tests do not take into account internal design and implementation details like, for example, db column type and limits, UI components format and type, etc, and, therefore, many edge cases may not be covered by the tests.
+3) Only HTTP methods, mentioned in demo task, are covered. Just as an example, non described DELETE method added to check that the HTTP error code in this case is 405. All other methods are omitted.
+4) Actual implementation of the API method GET /api/users does not require TOKEN parameter. The tests (/tests/test_get_all_users.py) were designed according to this imprecision, so this parameter is not needed.
+5) Some libraries, referenced in the Flasky project are not mentioned in requirements.txt, so when installing Flasky locally, you may need to downgrade versions of some libraries. This also mentions in corresponded section.
 ### For UI tests ###
 1) positive test cases will be run, negative test cases could be done in the same way (in example, trying to register with the same username will cause an error - we can check this error)
 2) parametrization is done for negative test cases for login
