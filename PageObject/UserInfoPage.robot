@@ -4,6 +4,11 @@ Library             SeleniumLibrary
 Library             OperatingSystem
 Library             String
 
+*** Variables ***
+${Page_User_info}           User Information - Demo App
+${Page_Title_main}          index page - Demo App
+
+
 *** Keywords ***
 Check user info
     [arguments]     ${username}     ${password}     ${first_name}       ${family_name}    ${phone}
