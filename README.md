@@ -139,5 +139,4 @@ Report is provided as html-file (by pytest-html). If you want to get run report,
 ```
 py.test --html=report.html -s --capture=tee-sys
 ```
-README.md
-Отображается файл "README.md"
+
