@@ -5,6 +5,7 @@ Resource        ../PageObject/resource.robot
 Resource        ../PageObject/RegisterPage.robot
 Resource        ../PageObject/LoginPage.robot
 Resource        ../PageObject/UserInfoPage.robot
+Resource        ../PageObject/ErrorPage.robot
 
 
 *** Test Cases ***
@@ -27,7 +28,6 @@ View user information
     LoginPage.User login  ${username}     ${password}
     UserInfoPage.Check user info     ${username}     ${password}     ${first_name}       ${family_name}    ${phone}
     LoginPage.User logout
-
 
 
 
