@@ -79,21 +79,21 @@ pytest
 
 Test execution progress and results will be shown on console. 
 
-To run the UI tests from console, you need to change the directory. From the project folder, run:
-
-```
-cd ui_tests
-```
-Remember the absolute path to the folder where you stored with application - {PATH_TO_THE_ROOT_FOLDER}
 
 To run test in Chrome, run
 ```
-robot --variable browser_name:Chrome {PATH_TO_THE_ROOT_FOLDER}/AssessmentSignantHealth 
+sh robot_chrome.sh 
 ```
 To run test in Firefox, run
 ```
-robot --variable browser_name:Firefox {PATH_TO_THE_ROOT_FOLDER}/AssessmentSignantHealth 
+sh robot_firefox.sh 
 ```
+
+## Test results ##
+Test Results could be found:
+- for API tests: /AssessmentSignantHealth/report.html
+- for UI tests: /AssessmentSignantHealth/ui_tests/report.html
+- for UI tests (log): /AssessmentSignantHealth/ui_tests/log.html
 
 ## Assumptions and limitations ##
 The following assumptions and limitations were made:
