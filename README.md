@@ -97,11 +97,13 @@ Test Results could be found:
 
 ## Assumptions and limitations ##
 The following assumptions and limitations were made:
+Common: not all possible test cases are presented in this project. Only positive test cases are presented to meet the acceptance criteria. Some negative test cases are also presented to show the experience.
 ### For API tests ###
-1) positive test cases will be run, tests with zero (highest) priority were described to meet the acceptance criteria. Parameterized tests (for test data) can be done with pytest.
+1) positive test cases will be run first to meet the acceptance criteria
 2) not all information about error codes and corner cases is available
-3) not all API methods are described in Assessment task. Test for DELETE method is present, and it checks that the error code is 405. All other methods were not covered.
-4) the task may have imprecision in description:
+3) not all HTTP methods are described in Assessment task
+4) test for DELETE method is present, and it checks that the error code is 405. All other http-methods were not covered.
+5) the task may have imprecision in description:
    1) API method GET /api/users does not require TOKEN parameter. The tests (/tests/test_get_all_users.py) were designed according to this imprecision, so this parameter is not needed .
    2) some libraries in Flasky project are not described in requirements.txt, so when installing Flasky locally, you may need to downgrade versions of some libraries.
 ### For UI tests ###
