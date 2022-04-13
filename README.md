@@ -105,11 +105,10 @@ Common: not all possible test cases are presented in this project. Only positive
 4) Actual implementation of the API method GET /api/users does not require TOKEN parameter. The tests (/tests/test_get_all_users.py) were designed according to this imprecision, so this parameter is not needed.
 5) Some libraries, referenced in the Flasky project are not mentioned in requirements.txt, so when installing Flasky locally, you may need to downgrade versions of some libraries. This also mentions in corresponded section.
 ### For UI tests ###
-1) positive test cases will be run, negative test cases could be done in the same way (in example, trying to register with the same username will cause an error - we can check this error)
-2) parametrization is done for negative test cases for login
-3) Nothing is mentioned about crossbrowser testing, so only Chrome and Firefox are supported for this task. Other browsers (Edge, Safai, Opera, etc.) can be supported in the same way (download driver, rename it to the same as browsername, put it to the /drivers folder)
-4) 3 types of locators are presented - 'id', 'xpath' and 'css'
-
+1) Only positive tests are implemented. Any kind of negative cases might be done by the same manner, for example, trying to register with the same username will cause an error - we can check this error.
+2) Parametrization implemented only for negative test cases for the 'Login' action
+3) Cross-browser testing aspects are not fully covered. That is, only a limited set of browsers is supported (actually, Chrome and Firefox without strict version requirements for both). Any other browsers (Edge, Safai, Opera, etc.) can be supported in the same way (download driver, rename it to the same as browsername, put it to the /drivers folder)
+4) 3 type of locators are implemented -  'id', 'xpath' and 'css'
 ## Test Cases ##
 Checklist for API tests. Basic assertions are presented in the table. Specific assertions are also made in tests
 
