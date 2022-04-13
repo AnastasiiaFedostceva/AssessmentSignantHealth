@@ -6,15 +6,23 @@ This repository contains tests for Signant Health Assessment task.
 The project consists of:
  - /tests module: files in this module describe test cases to meet the acceptance criteria
  - /utils module: files in this module describe different helpers for API methods, API requests and utils for randomizing.
+ - /PageObject module: robotFramework files for Page Object pattern
+ - /ui-tests: robotFramework files for UI testing
 
 ## Assumptions and limitations ##
 During this task some assumptions and limitations were made:
-1) positive test cases will be run , tests with zero (highest) priority were described to meet the acceptance criteria. Parameterized tests (for test data) can be done with pytest.
+### For API tests ###
+1) positive test cases will be run, tests with zero (highest) priority were described to meet the acceptance criteria. Parameterized tests (for test data) can be done with pytest.
 2) not all information about error codes and corner cases is available
 3) not all API methods are described in Assessment task. Test for DELETE method is presented and it checks that error code is 405. All other methods were not checked.
 4) the task may have imprecision in description:
    1) API method GET /api/users does not require TOKEN parameter. The tests (/tests/test_get_all_users.py) were designed according to this imprecision, so this parameter is not needed .
    2) some libraries in Flasky project are not described  in requirements.txt, so when installing Flasky you need to downgarde versions of some libraries.
+### For UI tests ###
+1) positive test cases will be run, negative test cases could be done in the same way (in example, trying to register with the same username will cause an error - we can check this error)
+2) parametrization can be done for negative test cases (with csv file)
+3) Nothing is mentioned about crossbrowser testing, so only Chrome and Firefox are supprted for this task. Other browsers (Edge, Safai, Opera< etc.) can be supported in the same way (download driver, rename it to the same as browsername, put it to the /drivers folder --> profit!)
+4) 3 types of locators are presented - id, xpath and css
    
 
 
@@ -73,10 +81,23 @@ Install the required libraries by running PIP
 pip install requirements.txt 
 ```
 
-Run the tests from console: from the project folder, run
+Run the API tests from console: from the project folder, run
 
 ```
 pytest
 ```
 
+Run the UI tests from console, you need to change the direcory: from the project folder, run
+
+```
+cd /ui_tests
+```
+To run test in Chrome, run
+```
+robot --variable browser_name:Chrome tests.robot
+```
+To run test in Firefox, run
+```
+robot --variable browser_name:Firefox tests.robot
+```
 
