@@ -7,6 +7,7 @@ def register(username=randomString(10),
              firstname=randomString(10),
              lastname=randomString(10),
              phone=f'+358{randomNumbers(9)}'):
+    print("SENT parameters >>> USERNAME: ", username, "PASSWORD: ", password,  "FIRSTNAME: ", firstname,  "LASTNAME: ", lastname,  "PHONE: ", phone)
     return post(
         endpoint='api/users',
         username=username,
@@ -22,6 +23,7 @@ def get_token(username, password):
 
 
 def update_user_info(updated_username, token, **kwargs):
+    print(updated_username)
     return put(endpoint=f'api/users/{updated_username}', headers={'Token': token}, **kwargs)
 
 

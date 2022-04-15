@@ -71,10 +71,10 @@ cd AssessmentSignantHealth/
 pip install -r requirements.txt
 ```
 
-Run the API tests from console: from the project folder, run
+Run the API tests from console (with logging): from the project folder, run
 
 ```
-pytest
+py.test --html=report.html -s --capture=tee-sys
 ```
 
 Test execution progress and results will be shown on console. 
@@ -91,7 +91,7 @@ sh robot_firefox.sh
 
 ## Test results ##
 Test Results could be found:
-- for API tests: /AssessmentSignantHealth/report.html
+- for API tests: /AssessmentSignantHealth/tests/report.html
 - for UI tests: /AssessmentSignantHealth/ui_tests/report.html
 - for UI tests (log): /AssessmentSignantHealth/ui_tests/log.html
 
@@ -104,6 +104,7 @@ Common: not all possible test cases are presented in this project. Only positive
 3) Only HTTP methods, mentioned in demo task, are covered. Just as an example, non described DELETE method added to check that the HTTP error code in this case is 405. All other methods are omitted.
 4) Actual implementation of the API method GET /api/users does not require TOKEN parameter. The tests (/tests/test_get_all_users.py) were designed according to this imprecision, so this parameter is not needed.
 5) Some libraries, referenced in the Flasky project are not mentioned in requirements.txt, so when installing Flasky locally, you may need to downgrade versions of some libraries. This also mentions in corresponded section.
+6) one test (test_update_profile.py::test_update_user_profile_username_404) is FAILED, because assertion for error code is failed. Updating profile for unexisting user must return 404 error code, but returns 201. This is a bug.
 ### For UI tests ###
 1) Only positive tests are implemented. Any kind of negative cases might be done by the same manner, for example, trying to register with the same username will cause an error - we can check this error.
 2) Parametrization implemented only for negative test cases for the 'Login' action
@@ -116,17 +117,21 @@ Checklist for API tests. Basic assertions are presented in the table. Specific a
 |------------------------------|---------------------------------------------------------------------------------------------|----------|
 | POST /api/user               | Register new user, check error code = 201                                                   | 0        |
 | POST /api/user               | Register new user with duplicate username, check error code = 400                           | 1        |
+| POST /api/user               | Register new user with null username, check error code = 400                                |          |
+| POST /api/user               | Register new user with null password, check error code = 400                                |          |
 | GET /api/users               | Get the list of users, check error code = 200                                               | 0        |
 | GET /api/users               | Register new user and check that he appears in the ist of all users, check error code = 200 | 0        |
 | GET /api/auth/token          | Get token for valid user, check error code = 200                                            | 0        |
-| GET /api/auth/token          | Get token for invalid user (wrong credentials), check error code = 400                      | 0        |
+| GET /api/auth/token          | Get token for invalid user (wrong credentials), check error code = 401                      | 0        |
 | GET /api/users/{username}    | Get user info for valid user, check error code = 200                                        | 0        |
 | GET /api/users/{username}    | Get user info for invalid user (without token), check error code = 401                      | 0        |
+| GET /api/user/{username}     | Get user info for user, that does not exist in DB, check error code = 500 (wrong URL)       |          |
 | POST /api/users/{username}   | Update user's profile with 1 field, check error code = 200                                  | 0        |
 | POST /api/users/{username}   | Update user's profile with 2 fields, check error code = 200                                 | 0        |
 | POST /api/users/{username}   | Update user's profile with 3 fields, check error code = 200                                 | 0        |
 | POST /api/users/{username}   | Update user's profile with 'username', check error code = 403 (username cannot be updated)  | 0        |
 | POST /api/users/{username}   | Update user's profile without sending TOKEN (without authorization), check error code = 401 | 0        |
+| POST /api/users/{username}   | Update user's profile with wrong username (username does not exist), check error code = 404 |          |
 | DELETE /api/users/{username} | Check additional method that is not described, 405 error code                               | 1        |
 
 ## Technical details ##
@@ -139,3 +144,14 @@ Report is provided as html-file (by pytest-html). If you want to get run report,
 py.test --html=report.html -s --capture=tee-sys
 ```
 
+### Bug reports ###
+Bug #1 
+Summary: Updating user info for unexisting user returns invalid error code
+Priority: medium
+Prerequisities: Check database (USER table) with USER.USERNAME fields
+Steps to reproduce:
+1. Register new user with random fields: POST /api/users
+2. Get token for new user: GET /api/auth/token
+3. Update user info: PUT /api/users/ with username, that does not exist in the system
+   Expected Result: error code 404, user with presented username is not in USER table
+   Actual Result: error code 201

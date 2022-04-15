@@ -21,6 +21,17 @@ def test_update_user_profile_username_403():
     assert status_code == 403
 
 
+def test_update_user_profile_username_404():
+    # A.Kugach: negative test to check 404 error (username does not exist)
+    username = randomString(10)
+    password = randomNumbers(10)
+    firstname = randomString(10)
+    register(username=username, password=password)
+    token = get_token(username=username, password=password).json()['token']
+    status_code = update_user_info(updated_username='nastya', token=token, firstname=f'updated_{firstname}').status_code
+    assert status_code == 404
+
+
 def test_update_user_profile_firstname():
     # A.Kugach: simple test to check firstname update
     username = randomString(10)
