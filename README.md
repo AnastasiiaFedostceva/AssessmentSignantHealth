@@ -157,5 +157,7 @@ Steps to reproduce:
 1. Register new user with random fields: POST /api/users
 2. Get token for new user: GET /api/auth/token
 3. Update user info: PUT /api/users/ with username, that does not exist in the system
+
    Expected Result: error code 404, user with presented username is not in USER table
+   
    Actual Result: error code 201
