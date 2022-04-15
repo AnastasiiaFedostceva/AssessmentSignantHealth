@@ -146,9 +146,13 @@ py.test --html=report.html -s --capture=tee-sys
 
 ### Bug reports ###
 Bug #1 
+
 Summary: Updating user info for unexisting user returns invalid error code
+
 Priority: medium
-Prerequisities: Check database (USER table) with USER.USERNAME fields
+
+Prerequisities: Check database (USER table) with USER.USERNAME field
+
 Steps to reproduce:
 1. Register new user with random fields: POST /api/users
 2. Get token for new user: GET /api/auth/token
