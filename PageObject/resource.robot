@@ -8,7 +8,7 @@ Library             OperatingSystem
 Library             String
 
 *** Variables ***
-${url}                  http://0.0.0.0:8080/
+${url}                  http://0.0.0.0:8081/
 ${browser_name}         Firefox
 
 

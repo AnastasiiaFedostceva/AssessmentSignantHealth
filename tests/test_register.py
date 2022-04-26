@@ -20,12 +20,12 @@ def test_registration_for_duplicate_user():
 
 def test_register_with_null_username():
     #A.Kugach: Check registration with empty username
-    status_code = register(username='')
-    assert status_code == 400
+    status_code = register(username=None)
+    assert status_code == 500
 
 
 def test_register_with_null_password():
     # A.Kugach: Check registration with empty password
-    status_code = register(password='')
+    status_code = register(password=None)
     print("TEST >>> ", status_code)
-    assert status_code == 400
+    assert status_code == 500

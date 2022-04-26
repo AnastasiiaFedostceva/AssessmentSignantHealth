@@ -2,19 +2,22 @@ from utils.request_helper import post, get, put, delete
 from utils.get_random_symbols import randomNumbers, randomString
 
 
-def register(username=randomString(10),
-             password=randomNumbers(10),
-             firstname=randomString(10),
-             lastname=randomString(10),
-             phone=f'+358{randomNumbers(9)}'):
-    print("SENT parameters >>> USERNAME: ", username, "PASSWORD: ", password,  "FIRSTNAME: ", firstname,  "LASTNAME: ", lastname,  "PHONE: ", phone)
+def register(**kwargs):
+
+    user = {
+        'username': randomString(10),
+        'password': randomString(10),
+        'firstname': randomString(10),
+        'lastname': randomString(10),
+        'phone': f'+358{randomNumbers(9)}'
+    }
+
+    user.update(kwargs)
+    for item in user.items():
+        print('User data to register >>> ', item)
     return post(
         endpoint='api/users',
-        username=username,
-        password=password,
-        firstname=firstname,
-        lastname=lastname,
-        phone=phone
+        **user
     )
 
 
